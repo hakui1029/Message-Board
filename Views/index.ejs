@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言版</title>
+    <style>
+        body{
+            background-color: lightyellow;
+        }
+        h1{
+            text-align: center;
+        }
+        .msgIn{
+            margin: 5px;
+        }
+        .msgOut{
+            margin: 5px;
+            line-height: 50px;
+        }
+        .date{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>留言板</h1>
+        <div class="msgIn">
+            <form action="/in" method="post">
+                暱稱: <input type="text" name="name" placeholder="不具名的訪客"><br>
+                訊息: <input type="text" name="msg"><br>
+                <button>送出</button>
+            </form>
+        </div>
+        <div class="msgOut">
+            <% for(let i=msgList.length-1;i>=0;i--){ %>
+                <div>
+                     <%= msgList[i].message %>
+                        <div>
+                            No.<%= msgList[i].no %> : 
+                            <%= msgList[i].name %><br>
+                            <%= msgList[i].msg %><br>
+                            <div class="date">
+                                <%= msgList[i].date %><br>
+                            </div>
+                            <hr>
+                        </div>
+                </div>    
+            <%}%>
+        </div>
+</body>
+</html>
